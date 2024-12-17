@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 const Form = () => {
 
   const [password , setPassword] = useState("");
-
   const [strength , setStrength] = useState({
     length: false,
     numbers: false,
