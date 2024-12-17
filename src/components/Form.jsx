@@ -28,6 +28,12 @@ const Form = () => {
     return Object.values(strength).filter((value) => value).length;
   };
 
+  const getProgressbarColor = (level) => {
+      if (level === 3) return "bg-color-6";
+      if (level === 2) return "bg-color-9";
+      if (level < 2) return "bg-color-7";
+  };
+
   const getLabelColor = (isValid) => {
     return isValid ? "text-color-6" : "text-color-7";
   };
@@ -49,7 +55,10 @@ const Form = () => {
           /><br/><br/>
           
         <div className="flex flex-row w-full">
-          <div className="w-full bg-green-400 h-[10px] rounded-lg"></div>
+          <div 
+          className={` h-[10px] rounded-lg ${getProgressbarColor(strengthLevel)}`}
+          style={{width: `${(strengthLevel / 3) * 100}%`}}
+          ></div>
         </div><br/>
 
           <label className={`text-[20px] ${getLabelColor(strength.length)}`}>8 characters </label><br/>
