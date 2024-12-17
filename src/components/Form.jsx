@@ -57,7 +57,7 @@ const Form = () => {
         <div className="flex flex-row w-full">
           <div 
           className={` h-[10px] rounded-lg ${getProgressbarColor(strengthLevel)}`}
-          style={{width: `${(strengthLevel / 3) * 100}%`}}
+          style={{width: password ? `${(strengthLevel / 3) * 100}%` : `2%`, transition: "width 0.3s ease-in-out" }}
           ></div>
         </div><br/>
 
