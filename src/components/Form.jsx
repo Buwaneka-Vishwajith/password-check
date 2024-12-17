@@ -20,18 +20,24 @@ const Form = () => {
     return {
       length: password.length >= 8,
       numbers: /\d/.test(password),
-      specialChars: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+      special: /[!@#$%^&*(),.?":{}|<>]/.test(password),
     };
   };
 
   const getStrengthlevel = (strength) => {
-    return object.value(strength).filter((value) = value).length;
+    return Object.values(strength).filter((value) => value).length;
   };
+
+  const getLabelColor = (isValid) => {
+    return isValid ? "text-color-6" : "text-color-7";
+  };
+
+  const strengthLevel = getStrengthlevel(strength);
 
   return (
     <div className="bg-color-8 flex justify-center items-center h-screen">
       <div className="flex flex-col p-6 bg-color-1 rounded-xl shadow-lg w-1/3">
-        <h1 className="text-3xl mb-4 text-color-5 flex justify-center">Password Validity Checker</h1><br/>
+        <h1 className="text-3xl mb-4 text-color-5 flex justify-center">Password Strength Checker</h1><br/>
         
         <form className="mb-4">
           <input
@@ -46,9 +52,9 @@ const Form = () => {
           <div className="w-full bg-green-400 h-[10px] rounded-lg"></div>
         </div><br/>
 
-          <label className="text-[20px] text-color-4">8 characters </label><br/>
-          <label className="text-[20px] text-color-4">Numbers </label><br/>
-          <label className="text-[20px] text-color-4">Special characters </label><br/>
+          <label className={`text-[20px] ${getLabelColor(strength.length)}`}>8 characters </label><br/>
+          <label className={`text-[20px] ${getLabelColor(strength.numbers)}`}>Numbers </label><br/>
+          <label className={`text-[20px] ${getLabelColor(strength.special)}`}>Special characters </label><br/>
         </form>
 
       </div>
@@ -56,4 +62,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default Form;
