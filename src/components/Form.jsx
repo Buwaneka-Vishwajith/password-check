@@ -1,6 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Form = () => {
+
+  const [password , setPassword] = useState("");
+
+  const [strength , setStrength] = useState({
+    length: false,
+    numbers: false,
+    special: false,
+  });
+
+  const handlePasswordChange = (e) => {
+    const newPasword = e.target.value;
+    setPassword(newPasword);
+    setStrength(checkPasswordStrength(newPasword));
+  };
+
+  const checkPasswordStrength = (password) => {
+    return {
+      length: password.length >= 8,
+      numbers: /\d/.test(password),
+      specialChars: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+    };
+  };
+
+  const getStrengthlevel = (strength) => {
+    return object.value(strength).filter((value) = value).length;
+  };
+
   return (
     <div className="bg-color-8 flex justify-center items-center h-screen">
       <div className="flex flex-col p-6 bg-color-1 rounded-xl shadow-lg w-1/3">
@@ -11,6 +38,8 @@ const Form = () => {
             type="text"
             className="border border-blue-500 p-2 rounded-[10px] w-full "
             placeholder="Enter your password"
+            value={password}
+            onChange={handlePasswordChange}
           /><br/><br/>
           
         <div className="flex flex-row w-full">
