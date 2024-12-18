@@ -22,10 +22,10 @@ const Form = () => {
   }, []);
 
   const generateBubbles = (strengthLevel) => {
-    const bubbleArray = Array.from({length: 50}).map(() => ({
+    const bubbleArray = Array.from({length: 20}).map(() => ({
       left: Math.random() * 100,
       top: Math.random() * 100,
-      size: Math.random() * 100 + 10,
+      size: Math.random() * 150 + 50,
       color: getBubbleColor(strengthLevel),
     }));
     setBubbles(bubbleArray);
