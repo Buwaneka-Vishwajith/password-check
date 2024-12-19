@@ -80,12 +80,19 @@ const Form = () => {
   const strengthLevel = getStrengthlevel(strength);
 
   return (
-    <div className="relative w-screen overflow-hidden bg-color-8 flex justify-center items-center h-screen">
-     
+    <MouseParallaxContainer className="relative w-screen overflow-hidden bg-color-8 
+                                       flex justify-center items-center h-screen"
+                            globalFactorX={0.1}  
+                            globalFactorY={0.1}         
+                            >
+                            
       
       {bubbles.map((bubble, index) => (
-        <div
+        <MouseParallaxChild
           key={index}
+          factorX={0.5 }
+          factorY={0.2 }
+      
           className="absolute rounded-full z-0"
           style={{
             width: `${bubble.size}px`,
@@ -96,15 +103,16 @@ const Form = () => {
             top: `${bubble.top}%`,
             left: `${bubble.left}%`,
             opacity: 0.8,
-            zIndex: 0,
+            // zIndex: 0,
           }}
             
-        ></div>
+        ></MouseParallaxChild>
       ))}
       
 
-      <div className="flex flex-col p-6 bg-color-1 rounded-xl z-10 shadow-lg w-1/3">
-        <h1 className="text-3xl mb-4 text-color-5 flex justify-center">Password Strength Checker</h1><br/>
+      <div className="flex flex-col p-6 bg-color-1 bg-opacity-30 backdrop-blur-md border
+                     border-color-1 rounded-xl z-10 shadow-lg lg:w-1/3 sm:w-2/3 md:w-1/2">
+        <h1 className="text-3xl mb-4 text-color-5 flex justify-center">Password Strength Meter</h1><br/>
         
         <form className="mb-4">
           <input
@@ -128,7 +136,7 @@ const Form = () => {
         </form>
 
       </div>
-    </div>
+    </MouseParallaxContainer>
   )
 }
 
