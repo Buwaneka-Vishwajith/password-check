@@ -37,7 +37,7 @@ const Form = () => {
       return green;
     }
   };
-
+ 6
   const handlePasswordChange = (e) => {
     const newPasword = e.target.value;
     setPassword(newPasword);
