@@ -22,8 +22,8 @@ const Form = () => {
       left: Math.random() * 100,
       size: Math.random() * 150 + 50,
       color: getBubbleColor(strengthLevel),
-      animationDuration: Math.random() * 5 + 5, // 5 to 10 seconds
-      animationDelay: Math.random() * 2, // 0 to 2 seconds
+      animationDuration: Math.random() * 5 + 5, 
+      animationDelay: Math.random() * 2, 
     }));
     setBubbles(bubbleArray);
   };
@@ -37,7 +37,7 @@ const Form = () => {
       return green;
     }
   };
- 6
+    
   const handlePasswordChange = (e) => {
     const newPasword = e.target.value;
     setPassword(newPasword);
@@ -56,7 +56,7 @@ const Form = () => {
       numbers: /\d/.test(password),
       special: /[!@#$%^&*(),.?":{}|<>]/.test(password),
     };
-  };
+  }; 
 
   const getStrengthlevel = (strength) => {
     return Object.values(strength).filter((value) => value).length;
@@ -87,7 +87,7 @@ const Form = () => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             left: `${bubble.left}%`,
-            bottom: "0%", // Start at the bottom
+            bottom: "0%", 
             animation: `floatUp ${bubble.animationDuration}s ease-in-out infinite`,
             animationDelay: `${bubble.animationDelay}s`,
           }}
